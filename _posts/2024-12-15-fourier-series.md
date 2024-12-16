@@ -7,7 +7,7 @@ The Fourier series is a way to represent a **periodic function** \( f(x) \) as a
 For a periodic function \( f(x) \) with period \( T \), the Fourier series is given by:
 
 \[
-f(x) = a_0 + \sum_{n=1}^\infty \big( a_n \cos\left(\frac{2\pi n x}{T}\right) + b_n \sin\left(\frac{2\pi n x}{T}\right) \big)
+f(x) = a_0 + \sum_{n=1}^\infty \left( a_n \cos\left(\frac{2\pi n x}{T}\right) + b_n \sin\left(\frac{2\pi n x}{T}\right) \right)
 \]
 
 ### Coefficients

@@ -58,7 +58,7 @@ We can derive the Fourier series for the square wave:
 f(x) = \frac{4}{\pi} \sum_{n=1, 3, 5, \dots}^{\infty} \frac{1}{n} \sin\left(\frac{n \pi x}{L}\right)
 \\]
 
-If we define \\( L = \pi \\), and plot the square wave and aproximate it with the Fourier series with the first term, the first 5, 20 and 100 terms, respetively, we get the following figure. As we can see, the more terms used, the better approximation result. 
+If we define \\( L = \pi \\), and plot the square wave aproximated by the Fourier series using the first term, the first 5, 20 and 100 terms, respetively, we get the following figure. As we can see, the more terms used, the better the approximation. 
 
 ![Fourier Series approximation]({{ site.baseurl }}/assets/images/2024/fourier_series.jpg)
 

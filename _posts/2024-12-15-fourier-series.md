@@ -34,3 +34,73 @@ b_n = \frac{2}{T} \int_0^T f(x) \sin\left(\frac{2\pi n x}{T}\right) \, dx
 2. **Frequency**: The term \\( \frac{2\pi n}{T} \\) is the angular frequency of the \\( n \\)-th harmonic.
 3. **Applicability**: Works for any piecewise continuous periodic function (including functions with discontinuities like square waves).
 4. **Convergence**: The Fourier series converges to the function at most points. At discontinuities, it converges to the average of the left and right limits (Gibbs phenomenon).
+
+### Example
+
+We can approximate a square wave with its Fourier series. Consider a periodic square wave \\( f(x) \\) with period \\( T = 2L \\). For simplicity, assume the square wave oscillates between \\(-1\\) and \\(1\\) and is defined as:
+
+<!-- comments: for piecewise functions, to avoid rendering the formual into one row due to unknown reasons, 
+I used the raw HTML wrapping with the div tag here. Also, the block delimiter should be \[ \], instead of \\[ and \\] -->
+
+<div>
+\[
+f(x) =
+\begin{cases}
+1 & \text{if } -L < x < 0 \\
+-1 & \text{if } 0 < x < L
+\end{cases}
+\]
+</div>
+
+We can derive the Fourier series for the square wave:
+
+\\[
+f(x) = \frac{4}{\pi} \sum_{n=1, 3, 5, \dots}^{\infty} \frac{1}{n} \sin\left(\frac{n \pi x}{L}\right)
+\\]
+
+If we define \\( L = \pi \\), and plot the square wave and aproximate it with the Fourier series with the first term, the first 5, 20 and 100 terms, respetively, we get the following figure. As we can see, the more terms used, the better approximation result. 
+
+![Fourier Series approximation]({{ site.baseurl }}/assets/images/2024/fourier_series.jpg)
+
+Python code to generate the above figure:
+  
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define the square wave function using Fourier series
+def square_wave_fourier_series(x, num_terms, L= np.pi):
+    approximation = np.zeros_like(x)
+    for n in range(1, num_terms + 1):
+        if n % 2 != 0:  # Only odd harmonics contribute
+            approximation += (4 / (np.pi * n)) * np.sin(n * np.pi * x / L)
+    return approximation
+
+# Generate the x values for one full period
+L = np.pi  # Half period of the square wave
+x = np.linspace(-L, L, 1000)
+
+# Define the number of terms and corresponding colors
+terms_list = [1, 5, 20, 100]
+colors = ['red', 'blue', 'green', 'purple']  # Customize your colors here
+
+# Plot the approximations
+plt.figure(figsize=(12, 6))
+for num_terms, color in zip(terms_list, colors):
+    y_approx = square_wave_fourier_series(x, num_terms, L)
+    plt.plot(x, y_approx, label=f'{num_terms} terms', color=color)
+
+# Add the true square wave for one period as a reference
+square_wave = np.sign(np.sin(np.pi * x / L))
+plt.plot(x, square_wave, 'k--', label='True Square Wave')
+
+# Customize the plot
+plt.title('Fourier Series Approximation of a Square Wave (One Period)')
+plt.xlabel('x')
+plt.ylabel('Amplitude')
+plt.legend()
+plt.grid(True)
+plt.xlim(-L, L)  # Limit x-axis to one full period
+plt.show()
+```
+

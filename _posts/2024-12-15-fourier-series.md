@@ -35,6 +35,27 @@ b_n = \frac{2}{T} \int_0^T f(x) \sin\left(\frac{2\pi n x}{T}\right) \, dx
 3. **Applicability**: Works for any piecewise continuous periodic function (including functions with discontinuities like square waves).
 4. **Convergence**: The Fourier series converges to the function at most points. At discontinuities, it converges to the average of the left and right limits (Gibbs phenomenon).
 
+### Complex Form
+<details>
+  <summary>Click to see the complex form of the Fourier series</summary>
+  <div> <!-- raw HTML wrapping can avoid some bugs in Markdown rendering -->
+  The complex form of the Fourier series is more compact than the above standard real form. Using Euler's formula:
+  \[
+	e^{iz} = \cos(z) + i\sin(z)
+  \]
+  where \(z\) is any real number, we can convert the standard real form to the complex form:
+  \[
+   f(x) = \sum_{n=-\infty}^{\infty} c_n e^{i\frac{2\pi nx}{T}}
+  \]
+  where the coefficients \( c_n \) are calculated as:
+  \[
+   c_n = \frac{1}{T} \int_0^T f(x) e^{-i\frac{2\pi n x}{T}} \, dx
+  \]
+  
+  The complex form simplifies the representation and makes many mathematical operations easier. It is particularly useful in signal processing and physics, as it compactly represents the function using exponential terms.
+  </div>
+</details>
+
 ### Example
 
 We can approximate a square wave with its Fourier series. Consider a periodic square wave \\( f(x) \\) with period \\( T = 2L \\). For simplicity, assume the square wave oscillates between \\(-1\\) and \\(1\\) and is defined as:

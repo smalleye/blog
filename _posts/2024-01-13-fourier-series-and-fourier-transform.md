@@ -71,6 +71,62 @@ Equation (6) is known as the **Fourier Transform**, representing the limit of th
 Conversely, Equation (5) is referred to as the **Inverse Fourier Transform**, which reconstructs the original function \\(f(t)\\) from its frequency representation 
 \\(F(\omega)\\).
 
+Without explicitly writing the required integral, these transforms are often expressed as:
+
+**Fourier Transform:**
+$$
+F(\omega) = \mathcal{F}\{f(t)\}
+$$
+
+**Inverse Fourier Transform:**
+$$
+f(t) = \mathcal{F}^{-1}\{F(\omega)\}
+$$
+
+
+### Function conditions for Fourier Transform:
+
+To apply the Fourier transform to a function \\( f(t) \\), certain conditions must be met. These conditions ensure that the integral defining the Fourier transform converges. The main conditions are:
+
+#### 1. Absolutely Integrable
+The function \\( f(t) \\) must be absolutely integrable over the real line:
+\\[
+\int_{-\infty}^{\infty} |f(t)| \, dt < \infty
+\\]
+This condition ensures that the energy of the function is finite and that the Fourier transform converges.
+
+#### 2. Piecewise Continuity
+The function \\( f(t) \\) must be piecewise continuous on any finite interval. This means:
+- \\( f(t) \\) is continuous except for a finite number of points within any finite interval.
+- At the points of discontinuity, \\( f(t) \\) must have finite left-hand and right-hand limits.
+
+#### 3. Bounded Variation
+The function \\( f(t) \\) should have bounded variation over any finite interval. This ensures that \\( f(t) \\) does not oscillate infinitely within a finite range.
+
+#### 4. Growth Rate
+The function \\( f(t) \\) must not grow faster than an exponential function as \\( |t| \to \infty \\). Specifically, there exists a constant \\( \alpha \\) such that:
+\\[
+|f(t)| \leq C e^{\alpha |t|}
+\\]
+where \\( C \\) is a constant. This condition is necessary for functions whose Fourier transform is not necessarily compactly supported.
+
+#### 5. Square Integrability (for energy signals)
+If \\( f(t) \\) is considered an energy signal, it should be square-integrable:
+\\[
+\int_{-\infty}^{\infty} |f(t)|^2 \, dt < \infty
+\\]
+This condition is particularly relevant when analyzing energy signals using the Fourier transform in signal processing.
+
+#### 6. Physical Applicability (Optional for Practical Signals)
+For practical applications, the function \\( f(t) \\) typically represents a physical signal that must be well-defined, finite, and representable in the time domain.
+
+#### Note:
+Some functions that do not meet these strict conditions can still have a generalized Fourier transform (e.g., distributions like the Dirac delta function). These cases require the use of the **Fourier Transform in the sense of distributions**.
+
+### Key Points:
+- The Fourier Transform decomposes a time or spatial domain signal into its frequency components.
+- The Inverse Fourier Transform reconstructs the time or spatial domain signal from its frequency components.
+- The factor \\( \frac{1}{2\pi} \\) in the Inverse Fourier Transform ensures the correct normalization, maintaining consistency between the forward and inverse transforms.
 
 ### References
 1. Signals and Systems, Edtion 6.0, Michael D. Adams, https://www.ece.uvic.ca/~frodo/sigsysbook/
